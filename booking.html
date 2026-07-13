@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Now | Dot's Pet Sitting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<script defer src="js/main.js"></script>
+<script defer src="js/config.js"></script>
+<script defer src="js/availability-data.js"></script>
+<script defer src="js/calculator.js"></script>
+<script defer src="js/booking-ui.js"></script>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ https://script.google.com https://docs.google.com https://*.googleusercontent.com; frame-src https://www.google.com/recaptcha/; frame-ancestors 'self'; form-action 'self'; base-uri 'self'; object-src 'none';">
+</head>
+<body>
+<header id="navbar"></header>
+
+<main>
+
+  <section class="plan-intro" style="margin-top: -5px;">
+    <h1>Build Your Pet Care Plan</h1>
+    <p style="font-size: 0.875rem; margin-top: -10px;">Your estimate updates automatically as you go. Keep in mind that this is only a request for booking.</p>
+  </section>
+
+  <div class="plan-builder">
+
+    <form class="plan-form" id="plan-form">
+
+      <section class="plan-section" id="pets-section">
+        <h2>Your Pets</h2>
+        <div id="pet-list"></div>
+        <button type="button" class="btn-add-pet" id="add-pet-btn">+ Add Another Pet</button>
+      </section>
+
+      <section class="plan-section">
+        <h2>Dates Needed</h2>
+        <div class="date-range">
+          <div class="form-field">
+            <label for="start-date">Start date</label>
+            <input type="date" id="start-date" name="start-date">
+          </div>
+          <div class="date-range-arrow">&rarr;</div>
+          <div class="form-field">
+            <label for="end-date">End date</label>
+            <input type="date" id="end-date" name="end-date">
+          </div>
+        </div>
+      </section>
+
+      <section class="plan-section">
+        <h2>Care Type</h2>
+
+        <div class="toggle-row">
+          <div class="toggle-row-label">
+            <strong>House Sitting</strong>
+            <span>Overnight care in your home, $30/night</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="house-sitting-toggle">
+            <span class="switch-track"></span>
+          </label>
+        </div>
+
+        <div class="toggle-row" id="visits-row">
+          <div class="toggle-row-label">
+            <strong>Visits per day</strong>
+            <span id="visits-helper">How many visits each day?</span>
+          </div>
+          <div class="stepper">
+            <button type="button" id="visits-decrease">&minus;</button>
+            <span id="visits-count">1</span>
+            <button type="button" id="visits-increase">&plus;</button>
+          </div>
+        </div>
+      </section>
+
+    </form>
+
+    <aside class="estimate-panel">
+      <h2>Estimated Cost</h2>
+
+      <div id="estimate-lines"></div>
+
+      <div class="estimate-total">
+        <span>Total</span>
+        <span class="estimate-price" id="estimate-price">$0</span>
+      </div>
+
+      <button type="button" class="btn-request" id="request-booking-btn" disabled>
+        Request Booking
+      </button>
+      <p class="estimate-note" id="estimate-status">Please add a pet and select dates to see your estimate.</p>
+      <p class="availability-warning" id="availability-warning"></p>
+    </aside>
+
+  </div>
+
+  <section class="request-section" id="request-section">
+    <h2>Request This Booking</h2>
+    <p>Submitting a request does not guarantee availability. I'll confirm all of the details and get back to you soon!</p>
+
+    <div class="form-row">
+      <div class="form-field">
+        <label for="owner-name">Your full name</label>
+        <input type="text" id="owner-name" placeholder="Jane Smith">
+      </div>
+      <div class="form-field">
+        <label for="owner-email">Email</label>
+        <input type="text" id="owner-email" placeholder="jane@email.com">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field">
+        <label for="owner-phone">Phone Number</label>
+        <input type="text" id="owner-phone" placeholder="(555) 555-5555">
+      </div>
+      <div class="form-field">
+        <label for="owner-address">Address</label>
+        <input type="text" id="owner-address" placeholder="For travel distance">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field">
+        <label for="emergency-contact">Emergency contact (name & phone)</label>
+        <input type="text" id="emergency-contact" placeholder="Jamie Rivera, (555) 555-1234">
+      </div>
+      <div class="form-field">
+        <label for="vet-clinic">Vet clinic name (optional)</label>
+        <input type="text" id="vet-clinic" placeholder="Yucaipa Animal Hospital">
+      </div>
+    </div>
+    <div class="form-field">
+      <label for="owner-notes">Anything else we should know?</label>
+      <textarea id="owner-notes" placeholder="Pet temperament, access instructions, special requests..."></textarea>
+    </div>
+
+    <div class="checkbox-field" id="agree-field">
+      <label class="checkbox-label">
+        <input type="checkbox" id="agree-checkbox">
+        I understand this is a request only, not a confirmed booking. Availability, travel distance, and pet temperament will be confirmed before anything is scheduled.
+      </label>
+    </div>
+
+    <input type="text" id="hp-field" class="hp-field" tabindex="-1" autocomplete="off">
+
+    <button type="button" class="button" id="submit-request-btn" style="margin-top:1.5rem;">Submit Request</button>
+  </section>
+
+</main>
+
+<footer id="footer"></footer>
+</body>
+</html>

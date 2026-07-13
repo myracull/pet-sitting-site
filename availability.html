@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Availability | Dot's Pet Sitting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<script defer src="js/main.js"></script>
+<script defer src="js/config.js"></script>
+<script defer src="js/availability-data.js"></script>
+<script defer src="js/availability.js"></script>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ https://script.google.com https://docs.google.com https://*.googleusercontent.com; frame-src https://www.google.com/recaptcha/; frame-ancestors 'self'; form-action 'self'; base-uri 'self'; object-src 'none';">
+</head>
+<body>
+<header id="navbar"></header>
+<main>
+<section class="services-intro">
+<h1>Availability</h1>
+<p>Please check the calendar below before requesting a booking. Colors update as my schedule changes!</p>
+</section>
+<div class="calendar-legend">
+<div class="legend-item"><span class="legend-swatch green"></span> Open</div>
+<div class="legend-item"><span class="legend-swatch yellow"></span> Limited - please be flexible</div>
+<div class="legend-item"><span class="legend-swatch red"></span> Unavailable</div>
+<div class="legend-item"><span class="legend-swatch unknown"></span> Not yet set</div>
+</div>
+<section class="plan-section">
+<div class="calendar-nav">
+<button type="button" id="cal-prev">&larr; Prev</button>
+<div class="calendar-month-label" id="calendar-month-label"></div>
+<button type="button" id="cal-next">Next &rarr;</button>
+</div>
+<div class="calendar-grid" id="calendar-grid"></div>
+<p class="calendar-status-note" id="calendar-status-note"></p>
+</section>
+<section class="booking-banner" style="margin-top: 20px;">
+<h2>See an open date you like?</h2>
+<p>Build a plan for your pet!
+<a href="booking.html" class="button" style="display: inline-block; margin-bottom: 20px; margin-top: 13px; margin-left: 12px;">Book Now</a></p>
+</section>
+</main>
+<footer id="footer"></footer>
+</body>
+</html>
