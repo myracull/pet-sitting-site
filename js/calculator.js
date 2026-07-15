@@ -3,7 +3,7 @@ const PRICING = {
     dog: 20,
     cat: 15
   },
-  walking: 10, // per walk, not per visit
+  walking: 10,
   houseSitting: {
     baseNightly: 30,
     visitsPerDayWithPets: 2
